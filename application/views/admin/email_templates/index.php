@@ -1,0 +1,3 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<div class="page-title"><div><h1>Email templates</h1><p class="text-muted mb-0">Transactional emails sent via SMTP. Use {placeholders} listed on each template.</p></div></div>
+<div class="list-group"><?php foreach ($rows as $r): ?><a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" href="<?= admin_url('email-templates/edit/'.$r->id) ?>"><span><strong><?= e($r->name) ?></strong><br><span class="small text-muted"><?= e($r->subject) ?></span></span><?= $r->is_active ? status_badge('active') : status_badge('inactive') ?></a><?php endforeach; ?></div>

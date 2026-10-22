@@ -1,0 +1,11 @@
+.env
+/writable/logs/*
+/writable/sessions/*
+/writable/cache/*
+/writable/private/*
+/public/uploads/*
+!/public/uploads/.htaccess
+!/public/uploads/index.html
+!**/.gitkeep
+!/writable/**/index.html
+/vendor/
