@@ -12,5 +12,5 @@
     <?php if ($tags): ?><p class="mt-4"><?php foreach ($tags as $t): ?><a class="badge text-bg-light text-decoration-none me-1" href="<?= site_url('blog/tag/'.$t->slug) ?>">#<?= e($t->name) ?></a><?php endforeach; ?></p><?php endif; ?>
   </div></div>
 </article>
-<?php if ($related): ?><section class="section bg-soft"><div class="container"><h2 class="mb-4">Related articles</h2><div class="row g-4"><?php foreach ($related as $p): ?><div class="col-md-4"><?php $this->load->view('public/partials/card', array('url' => site_url('blog/'.$p->slug), 'title' => $p->title, 'text' => $p->excerpt, 'image' => $p->featured_image)); ?></div><?php endforeach; ?></div></div></section><?php endif; ?>
+<?php if ($related): ?><section class="section bg-soft"><div class="container"><h2 class="mb-4">Related articles</h2><div class="row g-4"><?php foreach ($related as $p): ?><div class="col-md-4"><?php $this->load->view('public/partials/card', array('num' => NULL, 'url' => site_url('blog/'.$p->slug), 'title' => $p->title, 'text' => $p->excerpt, 'image' => $p->featured_image)); ?></div><?php endforeach; ?></div></div></section><?php endif; ?>
 <?php $this->load->view('public/partials/cta'); ?>

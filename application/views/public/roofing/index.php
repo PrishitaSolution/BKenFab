@@ -7,7 +7,7 @@ $this->load->view('public/partials/page_head', array('title' => $page->h1 ?: $pa
     <h2 class="mb-4">Roofing systems</h2>
     <div class="row g-4">
       <?php foreach ($categories as $c): ?>
-      <div class="col-sm-6 col-lg-4"><?php $this->load->view('public/partials/card', array('url' => site_url('roofing/'.$c->slug), 'title' => $c->name, 'text' => $c->short_description, 'image' => $c->image, 'icon' => 'house-gear')); ?></div>
+      <div class="col-sm-6 col-lg-4"><?php $this->load->view('public/partials/card', array('num' => NULL, 'url' => site_url('roofing/'.$c->slug), 'title' => $c->name, 'text' => $c->short_description, 'image' => $c->image, 'icon' => 'house-gear')); ?></div>
       <?php endforeach; ?>
     </div>
     <?php endif; ?>

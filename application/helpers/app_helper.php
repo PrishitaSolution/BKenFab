@@ -379,3 +379,24 @@ if ( ! function_exists('theme_css'))
 		return $css.'}';
 	}
 }
+
+if ( ! function_exists('admin_theme_css'))
+{
+	/** Brand colours for the admin panel: sidebar and buttons follow the primary colour, highlights follow the accent. */
+	function admin_theme_css()
+	{
+		$dark = valid_hex_color(setting('color_primary'), '#0b1a2c');
+		$accent = valid_hex_color(setting('color_accent'), '#f06a1d');
+		$rgb = function ($hex) { return implode(', ', sscanf($hex, '#%02x%02x%02x')); };
+		$vars = array(
+			'--adm-side' => color_mix($dark, '#000000', .25), '--adm-side-2' => color_mix($dark, '#000000', .1),
+			'--adm-primary' => $dark, '--adm-primary-dark' => color_mix($dark, '#000000', .3), '--adm-primary-rgb' => $rgb($dark),
+			'--adm-primary-soft' => color_mix($dark, '#ffffff', .91),
+			'--adm-accent' => $accent, '--adm-accent-dark' => color_mix($accent, '#000000', .2), '--adm-accent-rgb' => $rgb($accent),
+			'--adm-accent-soft' => color_mix($accent, '#ffffff', .91),
+		);
+		$css = ':root{';
+		foreach ($vars as $k => $v) $css .= $k.':'.$v.';';
+		return $css.'}';
+	}
+}

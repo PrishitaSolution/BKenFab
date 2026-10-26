@@ -24,6 +24,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = rtrim((string) env('APP_URL', ''), '/').'/';
+// Outside production, follow the address actually typed in the browser (localhost, 127.0.0.1, another port or a LAN IP).
+// Otherwise forms post to APP_URL, the browser does not send that host the session cookie, and login fails with a 403.
+if (env('APP_ENV', 'production') !== 'production' && ! empty($_SERVER['HTTP_HOST']) && preg_match('/^[a-z0-9.\-:\[\]]+$/i', $_SERVER['HTTP_HOST']))
+{
+	$_https = ( ! empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off');
+	$_dir = rtrim(str_replace('\\', '/', dirname(isset($_SERVER['SCRIPT_NAME']) ? $_SERVER['SCRIPT_NAME'] : '/')), '/');
+	$config['base_url'] = ($_https ? 'https' : 'http').'://'.$_SERVER['HTTP_HOST'].$_dir.'/';
+}
 /*
 |--------------------------------------------------------------------------
 | Index File
@@ -403,7 +411,11 @@ $config['sess_regenerate_destroy'] = TRUE;
 $config['cookie_prefix']	= '';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
-$config['cookie_secure']	= (bool) env('COOKIE_SECURE', FALSE);
+// Secure cookies are only sent over HTTPS, so the flag is applied only to HTTPS requests. With COOKIE_SECURE=true on a
+// plain-http address (local PC, or before SSL is installed) the browser would drop the session and every login would fail.
+$config['cookie_secure']	= (bool) env('COOKIE_SECURE', FALSE) && (( ! empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off')
+	OR (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && strtolower($_SERVER['HTTP_X_FORWARDED_PROTO']) === 'https')
+	OR (isset($_SERVER['SERVER_PORT']) && (int) $_SERVER['SERVER_PORT'] === 443));
 $config['cookie_httponly'] 	= TRUE;
 $config['cookie_samesite'] 	= 'Lax';
 

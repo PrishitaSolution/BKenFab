@@ -3,6 +3,7 @@ $phone = setting('phone'); $email = setting('email'); $wa = whatsapp_href();
 $quick = isset($form_token) && $form_token && setting('home_quick_form', '1') === '1'; ?>
 <section class="hero<?= $s->image ? ' has-image' : '' ?>">
   <?php if ($s->image): ?><div class="hero-bg"><?= picture($s->image, (string) $s->image_alt, array('lazy' => FALSE, 'class' => '')) ?></div><?php endif; ?>
+  <?php if ( ! $quick): ?><div class="hero-stripes" aria-hidden="true"><span></span><span></span><span></span></div><?php endif; ?>
   <div class="container position-relative">
     <div class="row g-5 align-items-center">
       <div class="<?= $quick ? 'col-lg-7' : 'col-lg-9' ?>">

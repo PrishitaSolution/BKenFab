@@ -45,6 +45,12 @@ Open http://127.0.0.1:8080/admin, sign in, and change the temporary password. Th
 
 If you prefer importing SQL by hand instead of running `cli migrate`, import `database/schema.sql` and then `database/seed.sql`.
 
+## Login troubleshooting
+
+- Open the site at the same address you use for `APP_URL`. Outside production the app follows whatever address you type (localhost, 127.0.0.1, another port), so login works either way on a local PC.
+- `COOKIE_SECURE=true` only takes effect on HTTPS pages, so login also works over plain http before SSL is installed.
+- If a form was left open too long, the page reloads with a "page expired" message; just submit it again.
+
 ## Tests
 
 `tools/smoke_test.py` runs 50 end-to-end checks against a running dev server. It needs Python 3 and `requests`.

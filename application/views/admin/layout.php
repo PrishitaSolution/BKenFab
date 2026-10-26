@@ -42,7 +42,9 @@ $flash = $this->session->flashdata('flash');
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap/bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= asset('vendor/bootstrap-icons/bootstrap-icons.min.css') ?>">
   <link rel="stylesheet" href="<?= asset('vendor/inter/inter.css') ?>">
+  <link rel="stylesheet" href="<?= asset('vendor/barlow-condensed/barlow-condensed.css') ?>">
   <link rel="stylesheet" href="<?= asset('css/admin.css') ?>">
+  <style><?= admin_theme_css() /* built only from validated hex colours */ ?></style>
   <?php if (setting('favicon')): ?><link rel="icon" href="<?= e(upload_url(setting('favicon'))) ?>"><?php endif; ?>
 </head>
 <body class="admin">

@@ -36,8 +36,9 @@ r = admin.post(BASE + '/admin/login', data={'bke_csrf': token(r.text), 'email': 
 check('admin login redirects to dashboard', r.status_code in (302, 303) and r.headers.get('Location', '').endswith('/admin'), r.status_code)
 
 # CSRF enforced
-r = admin.post(BASE + '/admin/services/create', data={'title': 'x'})
-check('POST without CSRF token is rejected', r.status_code == 403, r.status_code)
+r = admin.post(BASE + '/admin/services/create', data={'title': 'x'}, allow_redirects=False)
+# A failed CSRF check sends the browser back to the form with ?expired=1 (nothing is saved)
+check('POST without CSRF token is rejected', r.status_code == 403 or (r.status_code == 303 and 'expired=1' in r.headers.get('Location', '')), r.status_code)
 
 
 def admin_form(path, data, files=None):

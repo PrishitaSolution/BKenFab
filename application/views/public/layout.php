@@ -30,6 +30,8 @@ $copyright = setting('footer_copyright');
     <link rel="preload" href="<?= asset('vendor/inter/inter-latin-wght-normal.woff2') ?>" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="<?= asset('vendor/inter/inter.css') ?>">
     <?php endif; ?>
+    <link rel="preload" href="<?= asset('vendor/barlow-condensed/barlow-condensed-latin-700-normal.woff2') ?>" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="<?= asset('vendor/barlow-condensed/barlow-condensed.css') ?>">
     <link rel="stylesheet" href="<?= asset('css/site.css') ?>">
     <?php if ($theme): ?><style><?= $theme /* built only from validated hex colours */ ?></style><?php endif; ?>
     <meta name="theme-color" content="<?= e(valid_hex_color(setting('color_primary'), '#0b1a2c')) ?>">
@@ -45,6 +47,7 @@ $copyright = setting('footer_copyright');
 </head>
 <body<?= $show_mobile_bar ? ' class="has-mobile-actions"' : '' ?>>
 <a class="visually-hidden-focusable skip-link" href="#main">Skip to main content</a>
+<?php if ($this->input->get('expired')): ?><div class="notice-bar" role="status">The page was open for too long, so your form was not sent. Please fill it in again.</div><?php endif; ?>
 <?php if ( ! empty($preview_mode)): ?><div class="preview-bar">Preview mode: this page may contain unpublished content.</div><?php endif; ?>
 
 <?php if ($on('show_topbar') && ($phone OR $email OR $topbar_text)): ?>

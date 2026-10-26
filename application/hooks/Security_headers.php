@@ -20,6 +20,15 @@ class Security_headers
 			exit;
 		}
 
+		// In production, send www/non-www or IP visits to the APP_URL host so session cookies and canonical URLs match.
+		$app_host = parse_url((string) env('APP_URL', ''), PHP_URL_HOST);
+		$req_host = isset($_SERVER['HTTP_HOST']) ? strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'])) : '';
+		if (env('APP_ENV', 'production') === 'production' && $app_host && $req_host && $req_host !== strtolower($app_host))
+		{
+			header('Location: '.rtrim((string) env('APP_URL'), '/').$_SERVER['REQUEST_URI'], TRUE, 301);
+			exit;
+		}
+
 		header('X-Content-Type-Options: nosniff');
 		header('X-Frame-Options: SAMEORIGIN');
 		header('Referrer-Policy: strict-origin-when-cross-origin');

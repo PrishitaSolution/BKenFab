@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 /* Generic content card: $url, $title, $text, $image, $icon */ ?>
 <article class="card feature-card h-100">
+  <?php if ( ! empty($num)): ?><span class="card-num" aria-hidden="true"><?= e($num) ?></span><?php endif; ?>
   <?php if ( ! empty($image)): ?><div class="feature-card-media"><?= picture($image, '', array('size' => 'thumb', 'class' => 'w-100')) ?></div><?php endif; ?>
   <div class="card-body">
     <?php if ( ! empty($icon)): ?><div class="feature-icon"><i class="bi bi-<?= e($icon) ?>" aria-hidden="true"></i></div><?php endif; ?>
