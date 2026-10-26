@@ -1,0 +1,12 @@
+# Only needed when the domain's document root is this project folder instead of public/
+# (common on shared hosting). Every request is served from public/, so CSS, images and
+# pages all work, and application/, system/, writable/ and .env are never reachable.
+# If you can point the document root at public/ in the hosting panel, do that instead.
+Options -Indexes -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule "(^|/)\.(?!well-known/)" - [F,L]
+  RewriteCond %{REQUEST_URI} !^/public/
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>

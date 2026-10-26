@@ -24,6 +24,7 @@ Docs:
 - PHP 8.2+ with these extensions: mysqli, mbstring, gd (WebP support), fileinfo, dom, curl, json, openssl.
 - MySQL 8.0+ or MariaDB 10.6+, using the utf8mb4 character set.
 - Apache with mod_rewrite, or Nginx. The web server's document root **must be `public/`**.
+  - On shared hosting (cPanel) where you cannot change the document root, upload the whole project into the domain folder. The root `.htaccess` then serves everything from `public/`, so CSS and images load and the app folders and `.env` stay blocked. Move any old site files (old `index.html`/`index.php`, `theme/`, `upload/`) out of that folder first.
 
 ## Local setup
 
