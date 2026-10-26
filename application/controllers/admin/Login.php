@@ -3,9 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Login extends Admin_Controller
 {
-	protected $public_actions = array('login', 'forgot', 'reset', 'logout');
+	protected $public_actions = array('index', 'forgot', 'reset', 'logout');
 
-	public function login()
+	// Named index(), not login(): on PHP 7 a method named like its class is treated as the
+	// constructor, and CodeIgniter answers that route with a 404.
+	public function index()
 	{
 		if ($this->auth->check()) redirect(admin_url());
 		$error = NULL;

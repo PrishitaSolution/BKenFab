@@ -12,7 +12,7 @@ $route['robots\.txt'] = 'seo_files/robots';
 
 // ---- Admin (CRUD engine resources share one controller)
 $route['admin'] = 'admin/dashboard';
-$route['admin/login'] = 'admin/login/login';
+$route['admin/login'] = 'admin/login/index';
 $route['admin/logout'] = 'admin/login/logout';
 $route['admin/forgot-password'] = 'admin/login/forgot';
 $route['admin/reset-password/(:any)'] = 'admin/login/reset/$1';
