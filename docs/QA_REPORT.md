@@ -40,7 +40,7 @@ Fixed during QA:
    - Map each one to its new URL in **Admin › Redirects**.
 
    Until then, only the generic redirect rules exist.
-2. **Real content.** The database has only structural seed data: menus, system pages, homepage sections and email templates. There are no services, projects, testimonials, clients or numbers. This is deliberate, per the spec's "no invented content" rule.
+2. **Real content.** Migration 003 loads BK Enfab's content from the company catalogue (bk_cat.pdf) and the current bkenfab.com site: logo, brand colours, contact details, office and workshop, 6 services, 5 roofing systems, PEB frame data, 6 industries, 13 project photos, 2 gallery albums, 22 client logos, 2 testimonials, 8 FAQs and the About page. The project photos come from the catalogue and are low resolution; replace them with the original photos from **Admin › Projects**. WhatsApp number, business hours, legal name and legal pages still need the client's input.
 3. **Email delivery.** Needs SMTP credentials. Lead creation works without them; the email failure is logged on the lead timeline.
 4. **Analytics.** Needs the GA4/GTM IDs. The consent-gated loading and click-event wiring are already in place.
 5. **reCAPTCHA v3** (optional). Honeypot, timing and rate-limit protection are already active.

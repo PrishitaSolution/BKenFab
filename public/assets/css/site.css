@@ -384,3 +384,6 @@ a { text-underline-offset: .2em; }
 .lead-form.row { margin-left: 0; margin-right: 0; }
 .side-card.is-dark a { text-decoration: none; } .side-card.is-dark a:hover { text-decoration: underline; }
 @media (max-width: 767.98px) { body:not(.has-mobile-actions) .whatsapp-float { display: flex; } }
+
+/* Large gutters overflow the 12px container padding on phones */
+@media (max-width: 991.98px) { .row.g-5 { --bs-gutter-x: 1.5rem; } }

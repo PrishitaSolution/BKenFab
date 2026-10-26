@@ -62,7 +62,7 @@ It writes test content and leads. Run it only against a dev database, never agai
 
 The site contains no placeholder text and no invented certifications, clients, numbers or technical specifications.
 
-Business facts (legal name, contact details, addresses, certifications, client logos, project figures) stay empty until BK Enfab provides them. The Stats section and the About and legal pages stay hidden or in draft until then.
+Company content (services, roofing systems, PEB data, clients, testimonials, contact details) comes only from BK Enfab's own catalogue and current website, loaded by migration `003_bkenfab_content.php`. It fills a table only while it is empty and never overwrites admin edits. Images ship in `public/assets/content/` and can be replaced from admin. The legal pages stay in draft until BK Enfab provides the text.
 
 ## Notes
 
